@@ -3,7 +3,7 @@ from math import pi, sin, cos
 from direct.showbase.ShowBase import ShowBase
 from direct.task import Task
 from direct.actor.Actor import Actor
-from playsound import playsound
+import winsound
 
 class MyApp(ShowBase):
     def __init__(self):
@@ -19,7 +19,7 @@ class MyApp(ShowBase):
 
         # Add the spinCameraTask procedure to the task manager.
         self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
-        self.taskMgr.add(self.playSound, "PlaySound")
+        self.taskMgr.add(self.PLAY, "SpinCameraTask")
 
         # Load and transform the panda actor.
         self.pandaActor = Actor("models/panda-model",
@@ -31,7 +31,7 @@ class MyApp(ShowBase):
 
 
     def playSound(self, task):
-        playsound("H:/Downloads/pandasound.mp3")
+        winsound.playsound("sound/pandasound.wav", winsound.SND_ASYNC)
         return Task.cont
 
     # Define a procedure to move the camera.
