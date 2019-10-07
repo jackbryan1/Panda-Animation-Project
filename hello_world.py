@@ -19,7 +19,7 @@ class MyApp(ShowBase):
 
         # Add the spinCameraTask procedure to the task manager.
         self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
-        self.taskMgr.add(self.playSound, "PlaySoundTask")
+        winsound.PlaySound("pandasound.wav", winsound.SND_LOOP + winsound.SND_ASYNC)
 
         # Load and transform the panda actor.
         self.pandaActor = Actor("models/panda-model",
@@ -28,11 +28,6 @@ class MyApp(ShowBase):
         self.pandaActor.reparentTo(self.render)
         # Loop its animation.
         self.pandaActor.loop("walk")
-
-
-    def playSound(self, task):
-        winsound.PlaySound("pandasound.wav", winsound.SND_ASYNC)
-        return Task.cont
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
